@@ -1,2 +1,14 @@
-<h1>This is Blog Method</h1>
-<a href={{route('blog.index')}}>Blog</a>
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  @vite('resources/css/app.css')
+</head>
+<body>
+  <h1 class="text-3xl font-bold text-center text-red-500 mt-3 uppercase">
+  {{ $posts->title }}
+  </h1>
+  <p> {{ $posts->body }}</p>
+</body>
+</html>

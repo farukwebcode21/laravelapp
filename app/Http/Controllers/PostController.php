@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -13,7 +14,16 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('blogs.index');
+        // $posts = DB::select('SELECT * FROM posts'); // Show all data in database 
+        // $posts = DB::select('SELECT * FROM posts WHERE id = 11'); // Show single data in data base
+        // $posts = DB::delete('DELETE FROM posts where id = ?', [2]); // Delete selected id data in database 
+        // $posts = DB::table('posts')->get();
+        // $posts = DB::table('posts')->avg('min_to_read');
+        // dd($posts);
+
+
+        $posts = DB::table('posts')->find(3);
+        return view('blogs.index')->with('posts', $posts);
     }
 
     /**
@@ -21,7 +31,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('blogs.index');
+        
     }
 
     /**
