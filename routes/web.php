@@ -53,11 +53,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('/blog')->group(function(){
         // GET
+        Route::get('/create', [PostController::class, 'create'])->name('blog.create');
         Route::get('/', [PostController::class, 'index'])->name('blog.index');
         Route::get('/{id}', [PostController::class, 'show'])->name('blog.show');
     
         // POST
-        Route::get('/create', [PostController::class, 'create'])->name('blog.create');
+      
         Route::post('/', [PostController::class, 'store'])->name('blog.store');
     
         // PUT OR PATCH
