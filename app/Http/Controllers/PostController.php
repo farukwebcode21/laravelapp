@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -21,9 +22,14 @@ class PostController extends Controller
         // $posts = DB::table('posts')->avg('min_to_read');
         // dd($posts);
 
+        // $posts = Post::orderBy('id', 'desc')->take(10)->get();
+        // dd($posts);
 
-        $posts = DB::table('posts')->find(3);
-        return view('blogs.index')->with('posts', $posts);
+
+        // $posts = DB::table('posts')->find(3);
+        return view('blogs.index',[
+            'posts' =>Post::orderBy('updated_at', 'desc')->get()
+        ]);
     }
 
     /**
@@ -47,7 +53,12 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // $post =Post::findOrFail($id);
+        // dd($post);
+        
+        return view('blogs.show', [
+          'post' => Post::findOrFail($id)
+        ]);
     }
 
     /**

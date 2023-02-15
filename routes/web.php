@@ -68,6 +68,8 @@ Route::prefix('/blog')->group(function(){
         Route::delete('/{id}', [PostController::class, 'destroy'])->name('blog.destroy');
 });
 
+// Fallback Route
+
 Route::fallback(FallbackController::class);
 
 
